@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {useDispatch, useSelector} from 'react-redux';
+import { LoginGoogle } from './config/redux/actions/authAction'
 
 function App() {
+  const dispatch = useDispatch();
+
+  const {dataLogin} = useSelector((store) => store.authReducer);
+  console.log(dataLogin);
+  const dataUsers = dataLogin.user;
+  console.log(dataUsers);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <button onClick={() => dispatch(LoginGoogle())}>Login with Google</button><br/><br/><br/>
+    <img src={dataUsers.photoURL} alt="img-mail" />
+    <p>{dataUsers.displayName}</p>
+    <p>{dataUsers.email}</p>
+    </>
   );
 }
 
