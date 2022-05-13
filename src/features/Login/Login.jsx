@@ -16,7 +16,6 @@ function Login() {
       if(data) navigate("/home"); //di return di bagian actionnya
   } 
 
-
   const handleLoginEmail = () => {
     dispatch(LoginEmail(email, password));
     setTimeout(() => {
